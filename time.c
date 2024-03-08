@@ -19,7 +19,7 @@ void time_delay_callback(char* name, int64_t* start, bool start_condition,
   }
 
   if (start_condition && (time_currnet_us() - *start) > end) {
-    ESP_LOGI(TAG, "%s Timing End", name);
+    ESP_LOGI(TAG, "%s Timing End And Execute Callback Function", name);
     callback(arg);
     *start = 0;
   }
