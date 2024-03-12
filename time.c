@@ -3,7 +3,7 @@
 #include "esp_log.h"
 static const char* TAG = "TIME";
 
-int64_t time_currnet_us() {
+int64_t time_current_us() {
   struct timeval tv;
   gettimeofday(&tv, NULL);
   int64_t time_us = (int64_t)tv.tv_sec * 1000000L + (int64_t)tv.tv_usec;
@@ -15,10 +15,10 @@ void time_delay_callback(char* name, int64_t* start, bool start_condition,
                          time_delay_callback_t callback, void* arg) {
   if (start_condition && *start == 0) {
     ESP_LOGI(TAG, "Start %s Timing", name);
-    *start = time_currnet_us();
+    *start = time_current_us();
   }
 
-  if (start_condition && (time_currnet_us() - *start) > end) {
+  if (start_condition && (time_current_us() - *start) > end) {
     ESP_LOGI(TAG, "%s Timing End And Execute Callback Function", name);
     callback(arg);
     *start = 0;

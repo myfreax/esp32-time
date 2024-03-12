@@ -10,7 +10,7 @@ git submodule add git@github.com:myfreax/esp32-time.git components/time
 
 ```c
 void app_main(void) {
-  int64_t time_us = time_currnet_us();
+  int64_t time_us = time_current_us();
 }
 ```
 
