@@ -14,18 +14,18 @@ void time_delay_callback(char* name, int64_t* start, bool start_condition,
                          bool cancel_condition, int64_t end,
                          time_delay_callback_t callback, void* arg) {
   if (start_condition && *start == 0) {
-    ESP_LOGI(TAG, "Start %s Timing", name);
+    ESP_LOGI(TAG, "Start %s timing", name);
     *start = time_current_us();
   }
 
   if (start_condition && (time_current_us() - *start) > end) {
-    ESP_LOGI(TAG, "%s Timing End And Execute Callback Function", name);
+    ESP_LOGI(TAG, "%s timing end and execute callback function", name);
     callback(arg);
     *start = 0;
   }
 
   if (cancel_condition && *start != 0) {
-    ESP_LOGI(TAG, "Cancel %s Timing", name);
+    ESP_LOGI(TAG, "Cancel %s timing", name);
     *start = 0;
   }
 }
