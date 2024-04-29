@@ -1,4 +1,4 @@
 idf_component_register(
-  SRCS "time.c"
+  SRCS "datetime.c"
   INCLUDE_DIRS "include"
 )
